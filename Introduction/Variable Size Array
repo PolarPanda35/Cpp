@@ -1,0 +1,33 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    vector <int> temp_array;
+    vector <vector<int>> main_array;
+    int n, q;
+    cin >> n >> q;
+    for(int i = 0; i < n; i++){
+        int k;
+        cin >> k;
+        for(int j = 0; j < k; j++){
+            int iterator;
+            cin >> iterator;
+            temp_array.push_back(iterator);
+        }
+        main_array.push_back(temp_array);
+        temp_array.clear();
+    }
+
+    for(int k = 0; k < q; k++){
+        int horizontal,vertical;
+        cin >> horizontal >> vertical;
+        cout << main_array[horizontal][vertical] << endl;
+    }
+    return 0;
+}
