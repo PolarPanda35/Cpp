@@ -1,0 +1,28 @@
+#include <sstream>
+#include <vector>
+#include <iostream>
+using namespace std;
+
+vector<int> parseInts(string str) {
+	// Complete this function
+    int num;//to extract number
+    char comma;//to extract comma
+    stringstream ss(str);
+    vector <int> sol;//to make an array of num only
+    while (ss >> num){
+        sol.push_back(num);
+        ss >> comma;
+    }
+    return sol;
+}
+
+int main() {
+    string str;
+    cin >> str;
+    vector<int> integers = parseInts(str);
+    for(int i = 0; i < integers.size(); i++) {
+        cout << integers[i] << "\n";
+    }
+    
+    return 0;
+}
