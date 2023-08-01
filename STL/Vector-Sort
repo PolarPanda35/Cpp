@@ -1,0 +1,24 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    vector <int> ascendingOrder; 
+    int N;
+    cin >> N;
+    for (int i = 0; i < N; i++){
+        int num;
+        cin >> num;
+        ascendingOrder.push_back(num);
+    }   
+    sort(ascendingOrder.begin(),ascendingOrder.end());
+    for(int i = 0; i < ascendingOrder.size(); i++){
+        cout << ascendingOrder[i] << " " ;
+    }
+    return 0;
+}
