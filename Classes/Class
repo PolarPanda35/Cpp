@@ -1,0 +1,77 @@
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+/*
+Enter code for class Student here.
+Read statement for specification.
+*/
+class Student {
+    public:
+    int Age;
+    int Standard;
+    string first_Name;
+    string last_Name;
+    void set_age(int age){
+        Age = age;
+    }
+    int get_age(){
+        return Age;
+    }
+    void set_standard (int standard){
+        Standard = standard;
+    }
+    int get_standard(){
+        return Standard;
+    }
+    void set_first_name(string first_name){
+        first_Name = first_name;
+    }
+    string get_first_name(){
+        return first_Name;
+    }
+    void set_last_name(string last_name){
+        last_Name = last_name;
+    }
+    string get_last_name(){
+        return last_Name;
+    }
+    string to_string(){
+        string str;
+        stringstream age;
+        stringstream standard;
+        //Exporting value of Age to age
+        age << Age;
+        //Exporting value of Standard to standard
+        standard << Standard; 
+        string str1;
+        string str2;
+        //Inserting value of age to str1 in string type
+        age >> str1;
+        //Inserting value of standard to str2 in string type
+        standard >> str2;
+        str = str1+","+first_Name+","+last_Name+","+str2;
+        return str;
+    }
+};
+
+int main() {
+    int age, standard;
+    string first_name, last_name;
+    
+    cin >> age >> first_name >> last_name >> standard;
+    
+    Student st;
+    st.set_age(age);
+    st.set_standard(standard);
+    st.set_first_name(first_name);
+    st.set_last_name(last_name);
+    
+    cout << st.get_age() << "\n";
+    cout << st.get_last_name() << ", " << st.get_first_name() << "\n";
+    cout << st.get_standard() << "\n";
+    cout << "\n";
+    cout << st.to_string();
+    
+    return 0;
+}
