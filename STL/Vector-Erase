@@ -1,0 +1,30 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    vector <int> arry;
+    int n;
+    cin >> n;
+    for(int i = 0; i < n; i++){
+        int element;
+        cin >> element;
+        arry.push_back(element);
+    } 
+    int elementNo;
+    int start, end;
+    cin >> elementNo;
+    cin >> start >> end;
+    arry.erase(arry.begin() + elementNo - 1);
+    arry.erase(arry.begin() + start - 1, arry.begin() + end - 1);
+    cout << arry.size() << endl;
+    for(int i = 0; i < arry.size(); i++){
+        cout << arry[i] << " ";
+    }
+    return 0;
+}
