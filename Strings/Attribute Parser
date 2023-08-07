@@ -1,0 +1,64 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <map>
+#include <sstream>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIn. Print output to STDOUT */  
+    int n,q;
+    string attribute_name, traverse = "";
+    cin >> n >> q;
+    map <string, string> m;
+    cin.ignore();//if we won't use this then only one result wwill be shown
+    for(int i = 0; i < n; i++){
+        string line, extract, tag;
+        getline(cin, line);
+        stringstream stream(line);
+        while(getline(stream, extract, ' ')){
+            if(extract[0] == '<'){
+                if(extract[1] != '/'){
+                    tag = extract.substr(1);
+                    if(tag[tag.length() -1] == '>'){
+                        tag.pop_back();
+                    }
+                    if(traverse.size() == 0){
+                        traverse = tag;
+                    } else {
+                        traverse += "." + tag;
+                    }
+                } else {
+                    tag = extract.substr(2, extract.find('>') - 2);
+                    size_t last = traverse.find("." + tag);
+                    if(last != string :: npos )//here npos means if "."+ tag doesn't exist
+                        traverse = traverse.substr(0, last);
+                    else{
+                        traverse = "";
+                    }    
+                }                
+            } else if (extract[0] == '"') {
+                size_t pos = extract.find_last_of('"');
+                string attribute_value = extract.substr(1,pos-1);
+                m[attribute_name] = attribute_value;             
+            } else if (extract != "="){
+                attribute_name = traverse + "~" + extract;
+            } 
+        } 
+    }
+
+    string query;
+    for(int j = 0; j < q; j++){
+        getline(cin, query);
+        map <string, string> :: iterator itr = m.find(query);
+        if(itr != m.end()){
+            cout << itr -> second << endl;
+        } else {
+            cout << "Not Found!" << endl;
+        }
+    }
+    return 0;
+}
