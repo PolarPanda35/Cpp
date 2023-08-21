@@ -1,0 +1,46 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    int q,n;
+    cin >> n;
+    vector<int> arry;
+    vector<int> :: iterator itr;
+    for(int i = 0; i < n; i++){
+       int num;
+       cin >> num;
+       arry.push_back(num);
+    }
+    
+    
+    cin >> q;
+    for(int i = 0; i < q; i++){
+        int num;
+        cin >> num;
+        vector<int> :: iterator itr;
+        itr = lower_bound(arry.begin(), arry.end(), num);
+        int index = itr - arry.begin();
+        if(arry[itr-arry.begin()] == num){
+            cout << "Yes " << index + 1 << endl;
+        } else {
+            cout << "No " << index + 1 << endl;
+        }
+        
+        /* Alternate Code
+        if(arry[itr-arry.begin()] == num){
+            cout << "Yes " << itr - arry.begin() + 1 << endl;//Won't work without arry.begin() for some reason
+        } else {
+            cout << "No " << itr - arry.begin() + 1 << endl;//Won't work without arry.begin() for some reason
+        }
+        */
+
+
+    }   
+    return 0;
+}
